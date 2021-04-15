@@ -4,28 +4,23 @@
   <meta charset="utf-8">
   <title>Numbers | Tax Calculator</title>
 </head>
-
 <body>
-
-  <p>Tax Calculator</p>
+  <h1>Tax Calculator</h1>
   <form>
-    <input name="total" id="total">
-    <input name="rate" id="rate">
+    <label for="total">Total Amount <input name="total" id="total" type="number"></label>
+    <label for="rate">Tax Rate <input name="rate" id="rate" type="number"></label>
   </form>
   <button id="submitButton" type="submit">Submit</button>
   <p>Total with tax is <div id="final"></div></p>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script>
-    var total = document.getElementById("total").value,
-        rate = document.getElementById("rate").value;
-
     document.getElementById("submitButton").addEventListener('click', eventHandler);
     function eventHandler(event){
-      document.getElementById("final").innerHTML = total + (total * rate)
+      let total = document.getElementById("total").value,
+          rate = document.getElementById("rate").value;
+      document.getElementById("final").innerHTML = parseFloat(total) + (parseFloat(total) * parseFloat(rate))
     }
-    
   </script>
 </body>
-
 </html>
