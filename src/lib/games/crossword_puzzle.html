@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games | Crossword Puzzle</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  canvas {
+    border: 1px solid #d3d3d3;
+    background-color: #f1f1f1;
+  }
+</style>
+</head>
+<body onload="startGame()">
+<div class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:text-center">
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Game</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Crossword Puzzle
+      </p>
+    </div>
+    <main class="align-center" id="gameContainer">
+
+    </main>
+  </div>
+</div>
+
+<script src="../../assets/js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="../../assets/js/plugins.js"></script>
+  
+<script>
+const gc = document.getElementById("gameContainer");
+
+function startGame() {
+    myGameArea.start();
+}
+
+var myGameArea = {
+  canvas : document.createElement("canvas"),
+  start : function() {
+    this.canvas.width = 500;
+    this.canvas.height = 500;
+    this.context = this.canvas.getContext("2d");
+    gc.insertBefore(this.canvas, gc.childNodes[0]);
+  }
+}
+
+</script>
+</body>
+</html>
