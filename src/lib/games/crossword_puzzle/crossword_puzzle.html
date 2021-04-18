@@ -7,8 +7,9 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <style>
   canvas {
-    border: 1px solid #d3d3d3;
-    background-color: #f1f1f1;
+    margin: 0px auto;
+    border: 1px solid #cccccc;
+    background-color: #fcfcfc;
   }
 </style>
 </head>
@@ -21,31 +22,57 @@
         Crossword Puzzle
       </p>
     </div>
-    <main class="align-center" id="gameContainer">
+    <main class="mx-0 my-10" id="gameContainer">
 
     </main>
   </div>
 </div>
 
 <script src="../../assets/js/vendor/modernizr-3.11.2.min.js"></script>
-<script src="../../assets/js/plugins.js"></script>
-  
+<script src="../../../assets/js/require.js"></script>
+
 <script>
 const gc = document.getElementById("gameContainer");
+const data = ("./puzzle_data.json");
+console.log(data);
 
 function startGame() {
-    myGameArea.start();
+  myGameArea.start();
+}
+
+function drawBoard(c) {
+  c.fillStyle = "#ffffff";
+  c.strokeStyle = "#000000";
+
+  c.beginPath();
+  c.rect(10, 10, 50, 50);
+  c.stroke();
+  c.fill();
+  c.strokeText("J", 35, 50);
+
+  c.beginPath();
+  c.rect(10, 60, 50, 50);
+  c.stroke();
+  c.fill();
+  c.strokeText("T", 15, 75);
 }
 
 var myGameArea = {
-  canvas : document.createElement("canvas"),
-  start : function() {
-    this.canvas.width = 500;
-    this.canvas.height = 500;
+  canvas:document.createElement("canvas"),
+  startButton:document.createElement("a"),
+  startButtonContent:document.createTextNode("Hi there and greetings!"),
+  start:function() {
+    this.canvas.width = 750;
+    this.canvas.height = 1000;
     this.context = this.canvas.getContext("2d");
     gc.insertBefore(this.canvas, gc.childNodes[0]);
+    this.canvas.insertBefore(this.startButton, this.canvas.childNodes[0]);
+    this.startButton.appendChild(this.startButtonContent);
+    drawBoard(this.context);
   }
 }
+
+console.log(myGameArea.canvas.getContext("2d"))
 
 </script>
 </body>
