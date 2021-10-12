@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import { store } from './store';
 
-import './assets/scss/styles.scss';
 
 // initialize application //
 const app = createApp(App);
